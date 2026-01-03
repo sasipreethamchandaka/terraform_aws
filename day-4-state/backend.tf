@@ -3,7 +3,7 @@ terraform {
         bucket = "remote-statefile-s3bucket"
         key = "terraform.tfsate"
         region = "us-east-1"
-      
+        use_lockfile = true
     }
   
 }
