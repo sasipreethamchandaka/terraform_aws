@@ -2,6 +2,6 @@ resource "aws_instance" "name" {
     ami = "ami-068c0051b15cdb816"
     instance_type = "t2.medium"
    tags = {
-     Name = "sasi-chandaka"
+     Name = "sasi"
    }
 }
