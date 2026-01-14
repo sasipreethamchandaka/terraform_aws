@@ -12,7 +12,7 @@ resource "aws_subnet" "sasi" {
   cidr_block        = each.value.cidr
   availability_zone = each.value.az
 }
-resource "aws_db_subnet_group" "sub_grp" {
+resource "aws_db_subnet_group" "sub_group" {
   name       = "${var.environment}-db-subnet-group"
   subnet_ids = [for s in aws_subnet.sasi : s.id]
 
@@ -30,7 +30,7 @@ resource "aws_db_instance" "default" {
   username                     = "moon"
   manage_master_user_password  = true
 
-  db_subnet_group_name = aws_db_subnet_group.sub_grp.name
+  db_subnet_group_name = aws_db_subnet_group.sub_group.name
   #parameter_group_name = var.parameter_group_name
 
   backup_retention_period = var.backup_retention_period
