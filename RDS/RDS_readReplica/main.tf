@@ -1,12 +1,12 @@
 resource "aws_db_instance" "rds" {
   allocated_storage       = 15
-  db_name                 = "my_db_sasi"
-  identifier              = "readreplica"
+  db_name                 = "mydb"
+  identifier              = "sasi-db-read-repilca"
   engine                  = "mysql"
   engine_version          = "8.0"
   instance_class          = "db.t3.medium"
   username                = "admin"
-  password                = "admin123"
+  password                = "Italy328"
   db_subnet_group_name    = aws_db_subnet_group.sub-grp.id
   parameter_group_name    = "default.mysql8.0"
 
@@ -25,7 +25,7 @@ resource "aws_db_instance" "rds" {
 # READ REPLICA
 
 resource "aws_db_instance" "rds_read_replica" {
-  identifier              = "sasi-read-replica"
+  identifier              = "jupitor-read-replica"
   instance_class          = "db.t3.medium"
 
  replicate_source_db = aws_db_instance.rds.arn
@@ -53,7 +53,7 @@ resource "aws_subnet" "subnet-1" {
   cidr_block        = "10.0.0.0/24"
   availability_zone = "us-east-1a"
   tags = {
-    Name = "public-subnet"
+    Name = "My-sub1"
   }
 }
 
@@ -62,19 +62,19 @@ resource "aws_subnet" "subnet-2" {
   cidr_block        = "10.0.1.0/24"
   availability_zone = "us-east-1b"
   tags = {
-    Name = "private-subnet"
+    Name = "my-sub2"
   }
 }
 
 resource "aws_db_subnet_group" "sub-grp" {
-  name       = "mycutsubnett"
+  name       = "mysubnett"
   subnet_ids = [
     aws_subnet.subnet-1.id,
     aws_subnet.subnet-2.id
   ]
 
   tags = {
-    Name = "RDS-db subnet group"
+    Name = "Db subnet group"
   }
 }
 
