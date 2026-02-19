@@ -1,0 +1,3 @@
+[submodule "3-tier-Application-Infrastructre"]
+    path = 3-tier-Application-Infrastructre
+    url = https://github.com/sasipreethamchandaka/terraform_aws.git
